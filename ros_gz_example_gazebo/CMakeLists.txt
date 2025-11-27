@@ -6,7 +6,7 @@ project(ros_gz_example_gazebo)
 
 # Following directives find required packages and load their configuration.
 # The 'set' directive defines a variable (e.g. 'GZ_PLUGIN_VER').
-# Such variables can be used lateron in the CMakeLists.txt file.
+# Such variables can be used later on in the CMakeLists.txt file.
 find_package(ament_cmake REQUIRED)
 find_package(ros_gz_example_description REQUIRED)
 
@@ -16,8 +16,16 @@ set(GZ_PLUGIN_VER ${gz-plugin2_VERSION_MAJOR})
 find_package(gz-common5 REQUIRED COMPONENTS profiler)
 set(GZ_COMMON_VER ${gz-common5_VERSION_MAJOR})
 
-# Harmonic
-if("$ENV{GZ_VERSION}" STREQUAL "harmonic")
+# Gazebo version selector
+if("$ENV{GZ_VERSION}" STREQUAL "Jetty")
+  find_package(gz-sim10 REQUIRED)
+  set(GZ_SIM_VER ${gz-sim10_VERSION_MAJOR})
+  message(STATUS "Compiling against Gazebo Jetty")
+elseif("$ENV{GZ_VERSION}" STREQUAL "Ionic")
+  find_package(gz-sim9 REQUIRED)
+  set(GZ_SIM_VER ${gz-sim9_VERSION_MAJOR})
+  message(STATUS "Compiling against Gazebo Ionic")
+elseif("$ENV{GZ_VERSION}" STREQUAL "harmonic")
   find_package(gz-sim8 REQUIRED)
   set(GZ_SIM_VER ${gz-sim8_VERSION_MAJOR})
   message(STATUS "Compiling against Gazebo Harmonic")
@@ -49,7 +57,7 @@ target_include_directories(
 # gz-sim library when linking the 'BasicSystem' target.
 # The 'PRIVATE' keyword stipulates that the gz-sim library will not
 # automatically be included if the 'BasicSystem' target were to
-# be linked to anoter target. 
+# be linked to another target. 
 # ${GZ_SIM_VER} is substituted by the value that is was set to above.
 target_link_libraries(BasicSystem PRIVATE
   gz-sim${GZ_SIM_VER}::gz-sim${GZ_SIM_VER})
@@ -96,7 +104,7 @@ endif()
 
 
 # Following hooks are used to ensure that the correct environment variables
-# will be set by exectuting 'source install/setup.bash' after compilation.
+# will be set by executing 'source install/setup.bash' after compilation.
 # When using this template for your project, change the filenames of the
 # files in the 'hooks' folder, to correspond to your project name.
 ament_environment_hooks("${CMAKE_CURRENT_SOURCE_DIR}/hooks/${PROJECT_NAME}.dsv.in")

@@ -1,0 +1,60 @@
+{
+    "name": "ROS Development Container",
+    "privileged": true,
+    "remoteUser": "vscode",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2.12.4": {
+            "version": "latest",
+            "moby": true
+        },
+      // Might be a root cause of https://github.com/oleg-nenashev/ros_gz_project_template/pull/1#issuecomment-3585411158
+      //  "ghcr.io/devcontainers-extra/features/cmake:1": {
+      //      "version": "3.31.9"
+      //  }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions":[
+                // Repo
+                "ms-azuretools.vscode-docker",
+                "github.vscode-github-actions",
+                
+                // C++ Extensions
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-themes",
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools-extension-pack",
+
+                // Python Stack
+                "ms-python.python",
+
+                // ROS Extensions
+                "ms-iot.vscode-ros",
+
+                // Documentation
+                "streetsidesoftware.code-spell-checker",
+                "yzhang.markdown-all-in-one",
+                "redhat.vscode-yaml",
+                "shardulm94.trailing-spaces"
+            ]
+        }
+    },
+    "containerEnv": {
+        "ROS_DOMAIN_ID": "42",
+        "ROS_VERSION": "kilted",
+        // TODO: Update to Jetty
+        "GZ_VERSION": "harmonic"
+    },
+    "runArgs": [
+        "--net=host",
+        "--cap-add=SYS_PTRACE",
+        "--security-opt", "seccomp=unconfined"
+    ],
+    "mounts": [
+        "source=${localWorkspaceFolder}/.cache,target=/home/rosuser/.cache,type=bind"
+    ],
+    "onCreateCommand": ".devcontainer/init.sh"
+}
