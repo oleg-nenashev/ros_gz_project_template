@@ -86,25 +86,41 @@ For more details about the container internals, see the [Dev Container Doc](./.d
 
 ## Usage
 
-1. Build the project
+### Build the project
 
     ```bash
     colcon build --cmake-args -DBUILD_TESTING=ON
     ```
 
-1. Source the workspace
+### Source the workspace
 
     ```bash
     . ${REPO_ROOT}/install/setup.sh
     ```
 
-1. Launch the simulation
+### Launch the simulation
 
     ```bash
     ros2 launch ros_gz_example_bringup diff_drive.launch.py
     ```
 
+#### Simulation in the Dev Container
+
+When running in the Dev Container, you can also connect the display using X11.
+To do so on MacOS, you will need to install XQuartz locally and enable inbound connections:
+
+```bash
+brew install xquartz
+open -a XQuartz
+```
+
+After that, you will need to allow inbound connections in XQuartz.
+You can do it in _XQuartz Preferences_ -> _Security tab_.
+
+### More options
+
 For a more detailed guide on using this template see [documentation](https://gazebosim.org/docs/latest/ros_gz_project_template_guide).
+
 
 ## Contributing
 
