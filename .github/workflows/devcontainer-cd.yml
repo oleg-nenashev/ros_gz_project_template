@@ -1,25 +1,28 @@
-name: CI
+name: Deploy Dev Container Image to GitHub Packages
+
 on:
   push:
-    branches: [ "main", "devcontainers-dev" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: ["main", "devcontainers-dev"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
+concurrency:
+  cancel-in-progress: true
 
 jobs:
-  build-in-devcontainer:
-    name: Build (Dev Containers)
+  build-site:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: read
-        
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           submodules: "true"
-
+      
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2 
         with:
@@ -27,15 +30,11 @@ jobs:
             username: ${{ github.repository_owner }}
             password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build in the dev container image
+      - name: Build the Dev Container image and push it if smoke build passes
         uses: devcontainers/ci@v0.3
         with:
             imageName: ghcr.io/oleg-nenashev/ros_gz_project_template/testcontainers-native-builder:latest
             cacheFrom: ghcr.io/oleg-nenashev/ros_gz_project_template/testcontainers-native-builder:latest
-            push: never
+            push: always
             runCmd: |
               colcon build --cmake-args -DBUILD_TESTING=ON
-            env: |
-              GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-      # TODO: Add test reporting
-
