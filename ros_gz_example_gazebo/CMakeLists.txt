@@ -16,13 +16,16 @@ set(GZ_PLUGIN_VER ${gz-plugin2_VERSION_MAJOR})
 find_package(gz-common5 REQUIRED COMPONENTS profiler)
 set(GZ_COMMON_VER ${gz-common5_VERSION_MAJOR})
 
-# Jetty
+# Gazebo version selector
 if("$ENV{GZ_VERSION}" STREQUAL "Jetty")
   find_package(gz-sim10 REQUIRED)
   set(GZ_SIM_VER ${gz-sim10_VERSION_MAJOR})
   message(STATUS "Compiling against Gazebo Jetty")
-# Harmonic
-if("$ENV{GZ_VERSION}" STREQUAL "harmonic")
+if("$ENV{GZ_VERSION}" STREQUAL "Ionic")
+  find_package(gz-sim9 REQUIRED)
+  set(GZ_SIM_VER ${gz-sim9_VERSION_MAJOR})
+  message(STATUS "Compiling against Gazebo Ionic")
+elseif("$ENV{GZ_VERSION}" STREQUAL "harmonic")
   find_package(gz-sim8 REQUIRED)
   set(GZ_SIM_VER ${gz-sim8_VERSION_MAJOR})
   message(STATUS "Compiling against Gazebo Harmonic")
