@@ -10,9 +10,10 @@
             "version": "latest",
             "moby": true
         },
-        "ghcr.io/devcontainers-extra/features/cmake:1": {
-            "version": "3.31.9"
-        }
+      // Might be a root cause of https://github.com/oleg-nenashev/ros_gz_project_template/pull/1#issuecomment-3585411158
+      //  "ghcr.io/devcontainers-extra/features/cmake:1": {
+      //      "version": "3.31.9"
+      //  }
     },
     "customizations": {
         "vscode": {
