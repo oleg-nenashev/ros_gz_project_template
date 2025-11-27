@@ -1,0 +1,19 @@
+{
+    // ROS Configuration
+    "ros.distro": "kilted",
+    "ros.isolateEnvironment": "false",
+
+    // C/C++ Configuration
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "cmake.generator": "Ninja",
+
+    "cmake.buildToolArgs": [ "-v" ],
+
+    "cmake.configureArgs": [ "--no-warn-unused-cli" ],
+    "cmake.configureOnOpen": false,
+    "cmake.configureOnEdit": false,
+    "cmake.automaticReconfigure": false,
+    "cmake.skipConfigureIfCachePresent": true,
+    
+    // TODO: Python Configuration and other QoL things
+}

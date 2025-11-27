@@ -1,0 +1,14 @@
+
+// Docs: https://marketplace.visualstudio.com/items?itemName=ms-iot.vscode-ros 
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+          "name": "ROS: Launch ros_gz_example_bringup",
+          "request": "launch",
+          "target": "ros_gz_example_bringup/diff_drive.launch.py",
+          "launch": ["rviz", "gz", "ros_gz_example_bringup"],
+          "type": "ros"
+      }
+    ]
+}  
