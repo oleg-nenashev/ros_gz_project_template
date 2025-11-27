@@ -14,6 +14,20 @@
     "cmake.configureOnEdit": false,
     "cmake.automaticReconfigure": false,
     "cmake.skipConfigureIfCachePresent": true,
+
+    // TODO: Python Configuration
     
-    // TODO: Python Configuration and other QoL things
+    // Auxiliary tools
+    "cSpell.words": [
+        "bringup",
+        "colcon",
+        "DBUILD",
+        "mradugin",
+        "Radugin",
+        "rosdep",
+        "rosdistro",
+        "sdformat",
+        "urdf",
+        "vcstool"
+    ]
 }
