@@ -27,9 +27,10 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
   apt-get update && apt-get install -y \
     ssh git bash ccache htop curl  \
-    build-essential cmake pkg-config gdb \
+    build-essential cmake pkg-config gdb libboost-all-dev \
     python3 python3-pip python3-venv python3-vcstool python3-colcon-common-extensions python3-debugpy \
-    gz-jetty libboost-all-dev libgz-plugin2-dev libgz-common5-dev libgz-sim8-dev 
+    gz-harmonic libgz-plugin2-dev libgz-common5-dev libgz-sim8-dev 
+ # Jetty   gz-jetty libgz-plugin4-dev libgz-common7-dev libgz-sim10-dev 
 
 # Source ROS environment automatically
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash # ROS_SETUP_SCRIPT" >> /home/$USERNAME/.bashrc
