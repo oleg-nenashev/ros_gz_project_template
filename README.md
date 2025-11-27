@@ -12,11 +12,37 @@ A template project integrating ROS 2 and Gazebo simulator.
 * `ros_gz_example_bringup` - holds launch files and high level utilities.
 
 
-## Install
+## Usage
+
+### Baselines
 
 For using the template with Gazebo Fortress switch to the `fortress` branch of this repository, otherwise use the default branch `main` for Gazebo Harmonic onwards.
 
+### Use as template
+
+Directly `Use this template` and create your project repository on Github.
+
+Or start by creating a workspace and cloning the template repository:
+
+   ```bash
+   mkdir -p ~/template_ws/src
+   cd ~/template_ws/src
+   git clone https://github.com/gazebosim/ros_gz_project_template.git
+   ```
+
+## Install
+
 ### Requirements
+
+TODO: Summary
+
+### Dev Containers
+
+The template includes the Dev Container that provides the environment for developing ROS2 projects,
+and simulating them with Gazebo.
+For quick start, use this Dev Container with VSCode.
+
+### Local Setup
 
 1. Choose a ROS and Gazebo combination https://gazebosim.org/docs/latest/ros_installation
 
@@ -33,19 +59,6 @@ For using the template with Gazebo Fortress switch to the `fortress` branch of t
     sudo apt install python3-vcstool python3-colcon-common-extensions git wget
     ```
 
-### Use as template
-Directly `Use this template` and create your project repository on Github.
-
-Or start by creating a workspace and cloning the template repository:
-
-   ```bash
-   mkdir -p ~/template_ws/src
-   cd ~/template_ws/src
-   git clone https://github.com/gazebosim/ros_gz_project_template.git
-   ```
-
-## Usage
-
 1. Install dependencies
 
     ```bash
@@ -55,6 +68,8 @@ Or start by creating a workspace and cloning the template repository:
     rosdep update
     rosdep install --from-paths src --ignore-src -r -i -y --rosdistro <ROS_DISTRO>
     ```
+
+## Usage
 
 1. Build the project
 
@@ -75,3 +90,8 @@ Or start by creating a workspace and cloning the template repository:
     ```
 
 For a more detailed guide on using this template see [documentation](https://gazebosim.org/docs/latest/ros_gz_project_template_guide).
+
+## Contributing
+
+Any contributions to this template are welcome!
+Just submit a pull request.
