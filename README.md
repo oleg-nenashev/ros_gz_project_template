@@ -40,7 +40,13 @@ TODO: Summary
 
 The template includes the Dev Container that provides the environment for developing ROS2 projects,
 and simulating them with Gazebo.
-For quick start, use this Dev Container with VSCode.
+For quick start, use this Dev Container with Visual Studio Code.
+
+1. Open the project in Visual Studio Code
+2. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+3. Reopen the project in a container (click _Reopen in Container_ in the task or popup)
+
+For more details about the container internals, see the [Dev Container Doc](./.devcontainer/README.md).
 
 ### Local Setup
 

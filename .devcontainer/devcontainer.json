@@ -43,7 +43,8 @@
     },
     "containerEnv": {
         "ROS_DOMAIN_ID": "42",
-        "GZ_VERSION": "harmonic"
+        "GZ_VERSION": "jetty",
+        "ROS_VERSION": "kilted"
     },
     "runArgs": [
         "--net=host",
