@@ -33,8 +33,8 @@ jobs:
       - name: Build the Dev Container image and push it if smoke build passes
         uses: devcontainers/ci@v0.3
         with:
-            imageName: ghcr.io/oleg-nenashev/ros_gz_project_template/testcontainers-native-builder:latest
-            cacheFrom: ghcr.io/oleg-nenashev/ros_gz_project_template/testcontainers-native-builder:latest
+            imageName: ghcr.io/oleg-nenashev/ros_gz_project_template-devcontainer
+            cacheFrom: ghcr.io/oleg-nenashev/ros_gz_project_template-devcontainer
             push: always
             runCmd: |
               colcon build --cmake-args -DBUILD_TESTING=ON
