@@ -32,21 +32,13 @@ Or start by creating a workspace and cloning the template repository:
 
 ## Install
 
+To install the project build with this template, you will need to build and install the ROS modules from sources.
+You can do it locally or in a Dev Container.
+
 ### Requirements
 
 TODO: Summary
 
-### Dev Containers
-
-The template includes the Dev Container that provides the environment for developing ROS2 projects,
-and simulating them with Gazebo.
-For quick start, use this Dev Container with Visual Studio Code.
-
-1. Open the project in Visual Studio Code
-2. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-3. Reopen the project in a container (click _Reopen in Container_ in the task or popup)
-
-For more details about the container internals, see the [Dev Container Doc](./.devcontainer/README.md).
 
 ### Local Setup
 
@@ -75,6 +67,23 @@ For more details about the container internals, see the [Dev Container Doc](./.d
     rosdep install --from-paths src --ignore-src -r -i -y --rosdistro <ROS_DISTRO>
     ```
 
+### Dev Containers
+
+The template includes the Dev Container that provides the containerized developer environment for developing ROS2 projects,
+and simulating them with Gazebo.
+This environment can be used in CLI, or within your IDE.
+
+If you are not familiar with Dev Containers or Docker,
+[here is](https://youtu.be/dihfA7Ol6Mw?si=JRc0GdexlUdokSYK) a quick introduction to ROS development in a Dev Container. 
+For quick start, use this Dev Container with Visual Studio Code.
+
+1. Open the project in Visual Studio Code
+2. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+3. Reopen the project in a container (click _Reopen in Container_ in the task or popup)
+
+For more details about the container internals, see the [Dev Container Doc](./.devcontainer/README.md).
+
+
 ## Usage
 
 1. Build the project
@@ -86,7 +95,7 @@ For more details about the container internals, see the [Dev Container Doc](./.d
 1. Source the workspace
 
     ```bash
-    . ~/template_ws/install/setup.sh
+    . ${REPO_ROOT}/install/setup.sh
     ```
 
 1. Launch the simulation
@@ -101,3 +110,6 @@ For a more detailed guide on using this template see [documentation](https://gaz
 
 Any contributions to this template are welcome!
 Just submit a pull request.
+
+The main codebase is licensed under the [Apache License v2](./LICENSE).
+The Dev container codebase has the [MIT license](./dev)
