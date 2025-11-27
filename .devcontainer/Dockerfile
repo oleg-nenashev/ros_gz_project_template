@@ -13,23 +13,22 @@ RUN \
   && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 # Install sudo and add user to sudoers
-# RESTORE: apt-get update && \
-RUN apt-get install -y sudo && \
+RUN apt-get update && apt-get install -y sudo wget && \
   echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME && \
   chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Add ROS and Gazebo repos
 RUN echo "Configuring extra apt source repositories" && \
   echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list && \
-  sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg && \
+  wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add - && \
   echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list && \
-  sudo curl -sSL https://packages.osrfoundation.org/gazebo.key -o /usr/share/keyrings/gazebo-archive-keyring.gpg
+  wget https://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
 
 # Install dependencies and some tools
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
   apt-get update && apt-get install -y \
-    ssh git bash ccache htop gdb wget curl \
+    ssh git bash ccache htop gdb curl \
     python3 python3-pip python3-venv python3-vcstool python3-colcon-common-extensions python3-debugpy \
     build-essential cmake pkg-config
 
