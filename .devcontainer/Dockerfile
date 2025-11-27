@@ -27,7 +27,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
   apt-get update && apt-get install -y \
     ssh git bash ccache htop curl  \
-    build-essential cmake pkg-config gdb \
+    build-essential pkg-config gdb \
     python3 python3-pip python3-venv python3-vcstool python3-colcon-common-extensions python3-debugpy \
     gz-jetty libboost-all-dev libgz-plugin2-dev libgz-common5-dev libgz-sim8-dev 
 
